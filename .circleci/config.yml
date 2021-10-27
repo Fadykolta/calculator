@@ -1,12 +1,14 @@
---- 
-jobs: 
-  test: 
-    docker: 
-      - 
-        image: "cimg/node:17.0.1"
-    steps: 
-      - checkout
-      - 
-        run: "node --version"
 version: 2.1
-workflow: "test-deploy jobs - test"
+
+workflow:
+  test-deploy:
+    jobs:
+      - test
+      
+jobs:
+  test:
+    docker:
+      - image: cimg/node:17.0.1
+    steps:
+      - checkout
+      - run: node --version
